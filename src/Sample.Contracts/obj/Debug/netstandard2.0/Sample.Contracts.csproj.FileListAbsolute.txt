@@ -1,0 +1,9 @@
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\bin\Debug\netstandard2.0\Sample.Contracts.deps.json
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\bin\Debug\netstandard2.0\Sample.Contracts.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\bin\Debug\netstandard2.0\Sample.Contracts.pdb
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\obj\Debug\netstandard2.0\Sample.Contracts.csprojAssemblyReference.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\obj\Debug\netstandard2.0\Sample.Contracts.AssemblyInfoInputs.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\obj\Debug\netstandard2.0\Sample.Contracts.AssemblyInfo.cs
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\obj\Debug\netstandard2.0\Sample.Contracts.csproj.CoreCompileInputs.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\obj\Debug\netstandard2.0\Sample.Contracts.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Contracts\obj\Debug\netstandard2.0\Sample.Contracts.pdb

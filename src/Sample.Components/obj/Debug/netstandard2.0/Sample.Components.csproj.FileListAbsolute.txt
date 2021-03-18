@@ -1,0 +1,5 @@
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Components\bin\Debug\netstandard2.0\Sample.Contracts.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Components\obj\Debug\netstandard2.0\Sample.Components.csprojAssemblyReference.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Components\obj\Debug\netstandard2.0\Sample.Components.AssemblyInfoInputs.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Components\obj\Debug\netstandard2.0\Sample.Components.AssemblyInfo.cs
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Components\obj\Debug\netstandard2.0\Sample.Components.csproj.CoreCompileInputs.cache

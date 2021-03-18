@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z2xwUSe/aV1oXheph2o2v9AktAL8kz90NliFpSEgF0ipMFiBpLNBk9EpmEiY7R305o4kM2dDRR994v/njF1sdQ==",
+  "success": true,
+  "projectFilePath": "D:\\SoftwareEngineering\\Blazor\\2021\\MassTransitCommute\\CodeExamples\\StartingWithMediatR\\src\\Sample.Contracts\\Sample.Contracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\masstransit.analyzers\\7.1.6\\masstransit.analyzers.7.1.6.nupkg.sha512"
+  ],
+  "logs": []
+}

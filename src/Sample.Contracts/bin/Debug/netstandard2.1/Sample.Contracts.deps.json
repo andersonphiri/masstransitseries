@@ -1,0 +1,35 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "Sample.Contracts/1.0.0": {
+        "dependencies": {
+          "MassTransit.Analyzers": "7.1.6"
+        },
+        "runtime": {
+          "Sample.Contracts.dll": {}
+        }
+      },
+      "MassTransit.Analyzers/7.1.6": {}
+    }
+  },
+  "libraries": {
+    "Sample.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MassTransit.Analyzers/7.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZlIpVlaIEro6N1HW+9hAedNqh/7iMfjLvemYVBefWbuGfqdXRZMpNi9o5r36e/NcqKZr3wZ8w+gGc0VxfEHRWA==",
+      "path": "masstransit.analyzers/7.1.6",
+      "hashPath": "masstransit.analyzers.7.1.6.nupkg.sha512"
+    }
+  }
+}
