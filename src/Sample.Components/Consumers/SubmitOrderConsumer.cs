@@ -21,23 +21,31 @@ namespace Sample.Components.Consumers
             _Logger.LogInformation("SubmitOrderConsumer: {CustomerNumber}", context.Message.CustomerNumber);
             if (context.Message.CustomerNumber.Contains("TESt", StringComparison.InvariantCultureIgnoreCase))
             {
-                await context.RespondAsync<IOrderSubmissionRejected>(new
+                if (context.RequestId != null)
                 {
+                    await context.RespondAsync<IOrderSubmissionRejected>(new
+                    {
 
-                    OrderId = context.Message.OrderId,
-                    InVar.Timestamp,
-                    CustomerNumber = context.Message.CustomerNumber,
-                    Reasons = new[] { $"Test Customer cannot submit orders: {context.Message.CustomerNumber}" }
-                }) ;
+                        OrderId = context.Message.OrderId,
+                        InVar.Timestamp,
+                        CustomerNumber = context.Message.CustomerNumber,
+                        Reasons = new[] { $"Test Customer cannot submit orders: {context.Message.CustomerNumber}" }
+                    });
+                }
+                
                 return;
             }
-            await context.RespondAsync<IOrderSubmissionAccepted>(new
+            if (context.RequestId != null)
             {
-                InVar.Timestamp
+                await context.RespondAsync<IOrderSubmissionAccepted>(new
+                {
+                    InVar.Timestamp
 ,
-                OrderId = context.Message.OrderId,
-                CustomerNumber = context.Message.CustomerNumber
-            });
+                    OrderId = context.Message.OrderId,
+                    CustomerNumber = context.Message.CustomerNumber
+                });
+            }
+            
         }
     }
 }

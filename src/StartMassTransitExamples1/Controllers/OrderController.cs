@@ -13,11 +13,13 @@ namespace StartMassTransitExamples1.Controllers
     {
         readonly ILogger<OrderController> _Logger;
         private readonly IRequestClient<ISubmitOrder> _SubmitOrderRequestClient;
+        private readonly ISendEndpointProvider _SendEndpointProvider;
 
-        public OrderController(ILogger<OrderController> logger, IRequestClient<ISubmitOrder> submitOrderRequestClient)
+        public OrderController(ILogger<OrderController> logger, IRequestClient<ISubmitOrder> submitOrderRequestClient, ISendEndpointProvider sendEndpointProvider)
         {
             _Logger = logger;
             _SubmitOrderRequestClient = submitOrderRequestClient;
+            _SendEndpointProvider = sendEndpointProvider;
         }
 
         [HttpPost]
@@ -33,9 +35,26 @@ namespace StartMassTransitExamples1.Controllers
             });
             if (accepted.IsCompletedSuccessfully)
             {
-                return Ok(await accepted);
+                var result = await accepted;
+                return Ok(result);
             }
-            return BadRequest((await rejected).Message.Reasons);
+            var reasns = (await rejected).Message.Reasons;
+            return BadRequest(reasns);
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(Guid id, string customerNumber)
+        {
+            var endpoint = await _SendEndpointProvider.GetSendEndpoint(new Uri("exchange:submit-order"));
+            await endpoint.Send<ISubmitOrder>(new
+            {
+                OrderId = default(Guid),
+                Timestamp = default(DateTimeOffset),
+                CustomerNumber = default(string)
+            });
+            
+            return NoContent();
+        }
+
     }
 }

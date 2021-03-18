@@ -40,3 +40,5 @@ D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithM
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\obj\Debug\net5.0\ref\StartMassTransitExamples1.dll
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\obj\Debug\net5.0\StartMassTransitExamples1.pdb
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\obj\Debug\net5.0\StartMassTransitExamples1.genruntimeconfig.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\MassTransit.RabbitMqTransport.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\RabbitMQ.Client.dll

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MassTransit;
+using MassTransit.Definition;
 using MassTransit.Mediator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,17 +31,30 @@ namespace StartMassTransitExamples1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(KebabCaseEndpointNameFormatter.Instance);
             services.AddMassTransit(configure =>
             {
-                configure.AddConsumer<SubmitOrderConsumer>();
-               // configure.AddMediator(services);
-                configure.AddRequestClient<ISubmitOrder>();
+                //configure.AddBus(provider => Bus.Factory.CreateUsingRabbitMq());
+                configure.UsingRabbitMq((context, configurator) => {
+                    configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("order-service", false));
+                });
+                // configure.AddConsumer<SubmitOrderConsumer>();
+                // configure.AddMediator(services);
+                configure.AddRequestClient<ISubmitOrder>(
+                    //new Uri($"queue: {KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
+                    new Uri($"exchange: {KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
+                    ) ;
+                //configure.UsingRabbitMq((context, configure) =>
+                //{
+                   
+                //});
             });
-            services.AddMediator(configure =>
-            {
-                configure.AddConsumer<SubmitOrderConsumer>();
-                configure.AddRequestClient<ISubmitOrder>();
-            });
+            services.AddMassTransitHostedService();
+            //services.AddMediator(configure =>
+            //{
+            //    configure.AddConsumer<SubmitOrderConsumer>();
+            //    configure.AddRequestClient<ISubmitOrder>();
+            //});
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
