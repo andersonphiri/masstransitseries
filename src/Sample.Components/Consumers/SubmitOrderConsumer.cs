@@ -18,7 +18,7 @@ namespace Sample.Components.Consumers
         }
         public async Task Consume(ConsumeContext<ISubmitOrder> context)
         {
-            _Logger.LogInformation("SubmitOrderConsumer: {CustomerNumber}", context.Message.CustomerNumber);
+            _Logger.LogInformation("SubmitOrderConsumer for customer number: {CustomerNumber}", context.Message.CustomerNumber);
             if (context.Message.CustomerNumber.Contains("TESt", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (context.RequestId != null)
@@ -35,14 +35,21 @@ namespace Sample.Components.Consumers
                 
                 return;
             }
+
+            await context.Publish<OrderSubmitted>(new
+            {
+                context.Message.OrderId ,
+                context.Message.CustomerNumber,
+                context.Message.Timestamp
+            });
+
             if (context.RequestId != null)
             {
                 await context.RespondAsync<IOrderSubmissionAccepted>(new
                 {
-                    InVar.Timestamp
-,
-                    OrderId = context.Message.OrderId,
-                    CustomerNumber = context.Message.CustomerNumber
+                    InVar.Timestamp,
+                    context.Message.OrderId,
+                    context.Message.CustomerNumber
                 });
             }
             

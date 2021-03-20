@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sample.Contracts;
@@ -14,12 +15,47 @@ namespace StartMassTransitExamples1.Controllers
         readonly ILogger<OrderController> _Logger;
         private readonly IRequestClient<ISubmitOrder> _SubmitOrderRequestClient;
         private readonly ISendEndpointProvider _SendEndpointProvider;
+        private readonly IRequestClient<CheckOrder> _CheckOrderClient;
 
-        public OrderController(ILogger<OrderController> logger, IRequestClient<ISubmitOrder> submitOrderRequestClient, ISendEndpointProvider sendEndpointProvider)
+        public OrderController(ILogger<OrderController> logger, 
+            IRequestClient<ISubmitOrder> submitOrderRequestClient, 
+            ISendEndpointProvider sendEndpointProvider,
+            IRequestClient<CheckOrder> checkOrderClient)
         {
             _Logger = logger;
             _SubmitOrderRequestClient = submitOrderRequestClient;
             _SendEndpointProvider = sendEndpointProvider;
+            _CheckOrderClient = checkOrderClient;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Get(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("Id specified was empty");
+            }
+            var (found, notFound) = await _CheckOrderClient.GetResponse<OrderStatus, OrderNotFound>(new { OrderId = id });
+
+            if (found.IsCompletedSuccessfully)
+            {
+                var response = await found;
+                if (response != null)
+                    {
+                        return Ok(response.Message);
+                    }
+                return NotFound($"Order with ID: {id} was not found");
+
+            }
+            var notFoundResponse = await notFound;
+            if (notFoundResponse != null)
+            {
+                return NotFound(notFoundResponse.Message);
+            }
+            return NotFound($"Order with ID: {id} was not found");
         }
 
         [HttpPost]
@@ -36,24 +72,32 @@ namespace StartMassTransitExamples1.Controllers
             if (accepted.IsCompletedSuccessfully)
             {
                 var result = await accepted;
-                return Ok(result);
+                return Ok(result.Message);
             }
             var reasns = (await rejected).Message.Reasons;
             return BadRequest(reasns);
         }
 
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Put(Guid id, string customerNumber)
         {
-            var endpoint = await _SendEndpointProvider.GetSendEndpoint(new Uri("exchange:submit-order"));
-            await endpoint.Send<ISubmitOrder>(new
+            if (id != Guid.Empty && !string.IsNullOrEmpty(customerNumber) )
             {
-                OrderId = default(Guid),
-                Timestamp = default(DateTimeOffset),
-                CustomerNumber = default(string)
-            });
-            
-            return NoContent();
+                var endpoint = await _SendEndpointProvider.GetSendEndpoint(new Uri("exchange:submit-order"));
+                await endpoint.Send<ISubmitOrder>(new
+                {
+                    OrderId = id,
+                    InVar.Timestamp,
+                    CustomerNumber = customerNumber
+                });
+                return Ok("success!!");
+            }
+            return BadRequest("Either id or customer number is empty");
+           
+
         }
 
     }

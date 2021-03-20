@@ -40,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sample.Common.Infrastructure\Sample.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\Sample.Components\Sample.Components.csproj" />
   </ItemGroup>
 

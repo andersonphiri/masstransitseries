@@ -51,6 +51,10 @@
             "MassTransit.Analyzers": {
               "target": "Package",
               "version": "[7.1.6, )"
+            },
+            "MassTransit.Redis": {
+              "target": "Package",
+              "version": "[7.1.6, )"
             }
           },
           "imports": [

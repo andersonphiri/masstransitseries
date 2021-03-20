@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3XaGefQN5DLwSUMjwUYcG2DmboCV5+YEW663UerPOWn2Qi9xlYKd5So6e5H3JeqGKQ34nTQek5Du1LIBRV9hvg==",
+  "dgSpecHash": "b+AKd836qZeA8wtY3jBZoq9G4kmY14XyYbPdk3fsgDoTQ1NBOGFX88njNx5YuSrEgs4iSQaXHg4fwiR3uE1DYQ==",
   "success": true,
   "projectFilePath": "D:\\SoftwareEngineering\\Blazor\\2021\\MassTransitCommute\\CodeExamples\\StartingWithMediatR\\src\\Sample.Service\\Sample.Service.csproj",
   "expectedPackageFiles": [

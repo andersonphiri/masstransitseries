@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Sample.Common.Infrastructure;
 using Sample.Components.Consumers;
+using Sample.Components.StateMachines;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -36,14 +38,20 @@ namespace Sample.Service
                                     services.AddMassTransit(configure =>
                                     {
                                         configure.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
-                                        configure.AddConsumers(Assembly.GetEntryAssembly());
+                                        configure.AddSagaStateMachine<OrderStateMachine, OrderState>()
+                                        .RedisRepository(
+                                            s => s.DatabaseConfiguration("127.0.0.1")
+                                            );
+                                       // configure.AddConsumers(Assembly.GetEntryAssembly());
                                         configure.UsingRabbitMq((context, configurator) => {
-                                            configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("order-service", false));
+                                            configurator.ConfigureEndpoints(context
+                                               // , new KebabCaseEndpointNameFormatter("order-service", false)
+                                                );
                                             configurator.Host("localhost");
-                                            configurator.UseMessageRetry(retryConfigurator =>
-                                            {
-                                                retryConfigurator.Interval(3, TimeSpan.FromSeconds(60));
-                                            });
+                                            //configurator.UseMessageRetry(retryConfigurator =>
+                                            //{
+                                            //    retryConfigurator.Interval(3, TimeSpan.FromSeconds(60));
+                                            //});
 
                                         });
                                         //configure.AddBus(ConfigureBus);
@@ -53,16 +61,21 @@ namespace Sample.Service
                                 .ConfigureLogging((hostingContext, logging) =>
                                 {
                                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                                    logging.AddConsole();
+                                    logging.AddConsole()
+                                   // .AddJsonConsole(options => { })
+                                    ;
                                 });
             if (isService)
             {
                 await builder.UseWindowsService().Build().RunAsync();
             } else
             {
+                Console.Title = ConsoleUtils.GetVersion();
                 await builder.RunConsoleAsync();
             }
         }
+
+       
 
         static IBusControl ConfigureBus(IServiceProvider serviceProvider)
         {

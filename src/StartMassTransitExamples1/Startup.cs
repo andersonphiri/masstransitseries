@@ -36,18 +36,17 @@ namespace StartMassTransitExamples1
             {
                 //configure.AddBus(provider => Bus.Factory.CreateUsingRabbitMq());
                 configure.UsingRabbitMq((context, configurator) => {
-                    configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("order-service", false));
+                    configurator.ConfigureEndpoints(context
+                        //, new KebabCaseEndpointNameFormatter("order-service", false)
+                        );
                 });
                 // configure.AddConsumer<SubmitOrderConsumer>();
                 // configure.AddMediator(services);
                 configure.AddRequestClient<ISubmitOrder>(
-                    //new Uri($"queue: {KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
-                    new Uri($"exchange: {KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
+                    //new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
+                    new Uri($"exchange:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
                     ) ;
-                //configure.UsingRabbitMq((context, configure) =>
-                //{
-                   
-                //});
+                configure.AddRequestClient<CheckOrder>();
             });
             services.AddMassTransitHostedService();
             //services.AddMediator(configure =>

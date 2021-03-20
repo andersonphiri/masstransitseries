@@ -1,0 +1,12 @@
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\bin\Debug\net5.0\Sample.Common.Infrastructure.deps.json
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\bin\Debug\net5.0\Sample.Common.Infrastructure.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\bin\Debug\net5.0\ref\Sample.Common.Infrastructure.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\bin\Debug\net5.0\Sample.Common.Infrastructure.pdb
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.csprojAssemblyReference.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.AssemblyInfoInputs.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.AssemblyInfo.cs
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.csproj.CoreCompileInputs.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\ref\Sample.Common.Infrastructure.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Common.Infrastructure\obj\Debug\net5.0\Sample.Common.Infrastructure.pdb

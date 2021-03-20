@@ -83,3 +83,5 @@ D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithM
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Service\obj\Debug\net5.0\ref\Sample.Service.dll
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Service\obj\Debug\net5.0\Sample.Service.pdb
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Service\obj\Debug\net5.0\Sample.Service.genruntimeconfig.cache
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Service\bin\Debug\net5.0\Sample.Common.Infrastructure.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\Sample.Service\bin\Debug\net5.0\Sample.Common.Infrastructure.pdb

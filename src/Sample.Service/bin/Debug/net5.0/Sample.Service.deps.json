@@ -19,6 +19,7 @@
           "Microsoft.Extensions.Logging.Configuration": "5.0.0",
           "Microsoft.Extensions.Logging.Console": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0",
+          "Sample.Common.Infrastructure": "1.0.0",
           "Sample.Components": "1.0.0",
           "Serilog.Extensions.Logging": "3.0.1",
           "Serilog.Sinks.Console": "3.1.1"
@@ -1480,10 +1481,16 @@
           "System.Xml.ReaderWriter": "4.3.1"
         }
       },
+      "Sample.Common.Infrastructure/1.0.0": {
+        "runtime": {
+          "Sample.Common.Infrastructure.dll": {}
+        }
+      },
       "Sample.Components/1.0.0": {
         "dependencies": {
           "MassTransit": "7.1.6",
           "MassTransit.Analyzers": "7.1.6",
+          "MassTransit.Redis": "7.1.6",
           "Sample.Contracts": "1.0.0"
         },
         "runtime": {
@@ -1492,7 +1499,8 @@
       },
       "Sample.Contracts/1.0.0": {
         "dependencies": {
-          "MassTransit.Analyzers": "7.1.6"
+          "MassTransit.Analyzers": "7.1.6",
+          "MassTransit.Redis": "7.1.6"
         },
         "runtime": {
           "Sample.Contracts.dll": {}
@@ -2492,6 +2500,11 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "Sample.Common.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Sample.Components/1.0.0": {
       "type": "project",

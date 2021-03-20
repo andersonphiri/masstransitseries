@@ -59,6 +59,10 @@
             "MassTransit.Analyzers": {
               "target": "Package",
               "version": "[7.1.6, )"
+            },
+            "MassTransit.Redis": {
+              "target": "Package",
+              "version": "[7.1.6, )"
             }
           },
           "imports": [
@@ -125,6 +129,10 @@
           "targetAlias": "netstandard2.1",
           "dependencies": {
             "MassTransit.Analyzers": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.Redis": {
               "target": "Package",
               "version": "[7.1.6, )"
             }

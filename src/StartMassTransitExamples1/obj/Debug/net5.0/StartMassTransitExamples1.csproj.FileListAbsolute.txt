@@ -42,3 +42,13 @@ D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithM
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\obj\Debug\net5.0\StartMassTransitExamples1.genruntimeconfig.cache
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\MassTransit.RabbitMqTransport.dll
 D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\RabbitMQ.Client.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\MassTransit.RedisIntegration.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\Pipelines.Sockets.Unofficial.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\StackExchange.Redis.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\System.Diagnostics.PerformanceCounter.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\Sample.Common.Infrastructure.dll
+D:\SoftwareEngineering\Blazor\2021\MassTransitCommute\CodeExamples\StartingWithMediatR\src\StartMassTransitExamples1\bin\Debug\net5.0\Sample.Common.Infrastructure.pdb
