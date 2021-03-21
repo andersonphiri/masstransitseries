@@ -13,7 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Components", "src\Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Service", "src\Sample.Service\Sample.Service.csproj", "{E4082529-06C5-4CDC-A0C7-2D20652EB584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Common.Infrastructure", "src\Sample.Common.Infrastructure\Sample.Common.Infrastructure.csproj", "{14E55DAD-0F2F-4337-AF43-5C1E30B5125F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Common.Infrastructure", "src\Sample.Common.Infrastructure\Sample.Common.Infrastructure.csproj", "{14E55DAD-0F2F-4337-AF43-5C1E30B5125F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Components.Tests", "tests\Sample.Components.Tests\Sample.Components.Tests.csproj", "{2BF7665E-50E0-4450-9653-C323CB0CD8EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5C87E68-9AE8-453F-9FB7-5BC060EB4E73}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +92,18 @@ Global
 		{14E55DAD-0F2F-4337-AF43-5C1E30B5125F}.Release|x64.Build.0 = Release|Any CPU
 		{14E55DAD-0F2F-4337-AF43-5C1E30B5125F}.Release|x86.ActiveCfg = Release|Any CPU
 		{14E55DAD-0F2F-4337-AF43-5C1E30B5125F}.Release|x86.Build.0 = Release|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Debug|x64.Build.0 = Debug|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Release|x64.ActiveCfg = Release|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Release|x64.Build.0 = Release|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{2BF7665E-50E0-4450-9653-C323CB0CD8EE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit.Analyzers" Version="7.1.6" />
     <PackageReference Include="MassTransit.AspNetCore" Version="7.1.6" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.6" />

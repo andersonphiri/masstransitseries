@@ -11,14 +11,14 @@ namespace Sample.Components.Consumers
 {
     public class SubmitOrderConsumer : IConsumer<ISubmitOrder>
     {
-        ILogger<SubmitOrderConsumer> _Logger;
-        public SubmitOrderConsumer(ILogger<SubmitOrderConsumer> logger)
-        {
-            _Logger = logger;
-        }
+        //ILogger<SubmitOrderConsumer> _Logger;
+        //public SubmitOrderConsumer(ILogger<SubmitOrderConsumer> logger)
+        //{
+        //    _Logger = logger;
+        //}
         public async Task Consume(ConsumeContext<ISubmitOrder> context)
         {
-            _Logger.LogInformation("SubmitOrderConsumer for customer number: {CustomerNumber}", context.Message.CustomerNumber);
+           // _Logger.LogInformation("SubmitOrderConsumer for customer number: {CustomerNumber}", context.Message.CustomerNumber);
             if (context.Message.CustomerNumber.Contains("TESt", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (context.RequestId != null)
@@ -55,4 +55,5 @@ namespace Sample.Components.Consumers
             
         }
     }
+
 }

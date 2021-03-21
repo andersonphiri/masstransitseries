@@ -38,7 +38,7 @@ namespace Sample.Service
                                     services.AddMassTransit(configure =>
                                     {
                                         configure.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
-                                        configure.AddSagaStateMachine<OrderStateMachine, OrderState>()
+                                        configure.AddSagaStateMachine<OrderStateMachine, OrderState>(typeof(OrderStateMachineDefinition))
                                         .RedisRepository(
                                             s => s.DatabaseConfiguration("127.0.0.1")
                                             );
