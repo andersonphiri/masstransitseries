@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.6" />
+    <PackageReference Include="MassTransit.MongoDb" Version="7.1.6" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.6" />
     <PackageReference Include="MassTransit.Redis" Version="7.1.6" />
     <PackageReference Include="Microsoft.ApplicationInsights.DependencyCollector" Version="2.17.0" />

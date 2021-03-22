@@ -13,10 +13,10 @@ namespace Sample.Components.Consumers
            // base.ConfigureConsumer(endpointConfigurator, consumerConfigurator);
             endpointConfigurator.UseMessageRetry(retry => retry.Interval(3, 1000));
             endpointConfigurator.UseExecute((context) => Console.WriteLine($"Consuming From Address: {context.SourceAddress}"));
-            consumerConfigurator.Message<SubmitOrderConsumer>(configure =>
-            {
-               // configure.
-            });
+            //consumerConfigurator.Message<SubmitOrderConsumer>(configure =>
+            //{
+            //   // configure.
+            //});
         }
     }
 

@@ -1,13 +1,16 @@
-﻿using Automatonymous;
-using GreenPipes;
+﻿
 using MassTransit;
-using MassTransit.Definition;
-using MassTransit.RedisIntegration;
+//using MassTransit.RedisIntegration;
 using MassTransit.Saga;
+using MongoDB.Bson.Serialization.Attributes;
 using Sample.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using Automatonymous;
+using MassTransit.MongoDbIntegration;
+using Sample.Components.StateMachines.OrderStateMachineActivities;
 
 namespace Sample.Components.StateMachines
 {
@@ -34,6 +37,11 @@ namespace Sample.Components.StateMachines
                     x.CorrelateById(m => m.Message.OrderId);
                 });
             InstanceState(x => x.CurrentState);
+
+            Event(() => AccountClosed, x => x.CorrelateBy(
+                (instance, context) => instance.CustomerNumber == context.Message.CustomerNumber));
+            Event(() => OrderAccepted, x => x.CorrelateById(m => m.Message.OrderId));
+
             Initially(
                 When(OrderSubmitted)
                  .Then(context =>
@@ -47,7 +55,11 @@ namespace Sample.Components.StateMachines
                
                 );
             //if i have already tried to submit, just ignore and do not publish a fault
-            During(Submitted, Ignore(OrderSubmitted));
+            During(Submitted, 
+                Ignore(OrderSubmitted)
+                ,When(AccountClosed).TransitionTo(Cancelled)
+                , When(OrderAccepted).Activity(x => x.OfType<AcceptOrderActivity>()).TransitionTo(Accepted)
+                );
             // handle check order Status request
             DuringAny(
                 When(OrderStatusRequested)
@@ -71,32 +83,14 @@ namespace Sample.Components.StateMachines
         }
 
         public State Submitted { get; private set; }
+        public State Cancelled { get; private set; }
+        public State Accepted { get; private set; }
         public Event<OrderSubmitted> OrderSubmitted { get; private set; }
-        // handle check order status request
+        public Event<IOrderAccepted> OrderAccepted { get; private set; }
         public Event<CheckOrder> OrderStatusRequested { get; private set; }
+        public Event<ICustomerAccountClosed> AccountClosed { get; private set; }
+        
     }
 
-    public class OrderState : SagaStateMachineInstance, ISagaVersion
-    {
-        public Guid CorrelationId { get; set; }
-        public string CurrentState { get; set; }
-        public DateTimeOffset? Updated { get; set; }
-        public string CustomerNumber { get; set; }
-        public int Version { get ; set; }
-        public DateTimeOffset? SubmitDate { get; set; }
-    }
-
-    public class OrderStateMachineDefinition : SagaDefinition<OrderState>
-    {
-        public OrderStateMachineDefinition()
-        {
-            ConcurrentMessageLimit = 4;
-        }
-        protected override void ConfigureSaga(IReceiveEndpointConfigurator endpointConfigurator, ISagaConfigurator<OrderState> sagaConfigurator)
-        {
-            endpointConfigurator.UseMessageRetry(r => r.Intervals(500, 5000, 10000));
-            endpointConfigurator.UseInMemoryOutbox();
-        }
-    }
 
 }

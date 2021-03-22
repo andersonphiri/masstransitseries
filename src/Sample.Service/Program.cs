@@ -15,6 +15,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
+
 namespace Sample.Service
 {
     class Program
@@ -39,9 +40,13 @@ namespace Sample.Service
                                     {
                                         configure.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
                                         configure.AddSagaStateMachine<OrderStateMachine, OrderState>(typeof(OrderStateMachineDefinition))
-                                        .RedisRepository(
-                                            s => s.DatabaseConfiguration("127.0.0.1")
-                                            );
+                                        //.RedisRepository(s => s.DatabaseConfiguration("127.0.0.1"))
+                                        .MongoDbRepository(r => {
+                                            r.Connection = "mongodb://127.0.0.1";
+                                            r.DatabaseName = "orderdb";
+                                        }
+                                        )
+                                        ;
                                        // configure.AddConsumers(Assembly.GetEntryAssembly());
                                         configure.UsingRabbitMq((context, configurator) => {
                                             configurator.ConfigureEndpoints(context
