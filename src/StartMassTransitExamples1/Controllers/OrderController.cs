@@ -16,16 +16,19 @@ namespace StartMassTransitExamples1.Controllers
         private readonly IRequestClient<ISubmitOrder> _SubmitOrderRequestClient;
         private readonly ISendEndpointProvider _SendEndpointProvider;
         private readonly IRequestClient<CheckOrder> _CheckOrderClient;
+        private readonly IPublishEndpoint _PublishEndpoint;
 
         public OrderController(ILogger<OrderController> logger, 
             IRequestClient<ISubmitOrder> submitOrderRequestClient, 
             ISendEndpointProvider sendEndpointProvider,
-            IRequestClient<CheckOrder> checkOrderClient)
+            IRequestClient<CheckOrder> checkOrderClient, 
+            IPublishEndpoint publishEndpoint)
         {
             _Logger = logger;
             _SubmitOrderRequestClient = submitOrderRequestClient;
             _SendEndpointProvider = sendEndpointProvider;
             _CheckOrderClient = checkOrderClient;
+            _PublishEndpoint = publishEndpoint;
         }
 
         [HttpGet]
@@ -57,9 +60,25 @@ namespace StartMassTransitExamples1.Controllers
             }
             return NotFound($"Order with ID: {id} was not found");
         }
+        [HttpGet]
+        [Route("orders/approve")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> GetPublishedOrder(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("Id specified was empty");
+            }
+            await _PublishEndpoint.Publish<OrderAccepted>(new
+            {
+              OrderId = id,InVar.Timestamp });
+            return Accepted();
+            
+        }
 
         [HttpPost]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "MCA0001:Anonymous type does not map to message contract", Justification = "<Pending>")]
         public async Task<ActionResult> Post(Guid id, string customerNumber)
         {
             var (accepted, rejected) = await _SubmitOrderRequestClient.GetResponse<IOrderSubmissionAccepted, IOrderSubmissionRejected>(new

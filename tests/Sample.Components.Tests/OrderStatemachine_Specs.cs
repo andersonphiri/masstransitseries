@@ -141,7 +141,7 @@ namespace Sample.Components.Tests
                 var instanceId = await saga.Exists(orderId, x => x.Submitted);
                 Assert.That(instanceId, Is.Not.Null);
 
-                await harness.Bus.Publish<IOrderAccepted>(new
+                await harness.Bus.Publish<OrderAccepted>(new
                 {
                     OrderId = orderId, Timestamp = InVar.Timestamp
                 });

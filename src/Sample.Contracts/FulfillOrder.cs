@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sample.Contracts
 {
-    public interface IOrderAccepted
+    public interface FulfillOrder
     {
         Guid OrderId { get; }
-        DateTimeOffset Timestamp { get; }
     }
 }

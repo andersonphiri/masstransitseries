@@ -7,7 +7,7 @@ namespace Sample.Common.Infrastructure
     {
         public static string GetVersion()
         {
-            var assembly = Assembly.GetExecutingAssembly().GetName();
+            var assembly = Assembly.GetCallingAssembly().GetName();
             return $"{assembly.Name} V{assembly.Version}";
         }
     }

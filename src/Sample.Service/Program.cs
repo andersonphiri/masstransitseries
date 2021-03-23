@@ -8,13 +8,15 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Sample.Common.Infrastructure;
 using Sample.Components.Consumers;
+using Sample.Components.CourierActivities;
 using Sample.Components.StateMachines;
+using Sample.Components.StateMachines.OrderStateMachineActivities;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-
+using Warehouse.Contracts;
 
 namespace Sample.Service
 {
@@ -35,10 +37,12 @@ namespace Sample.Service
                                 })
                                 .ConfigureServices((hostContext, services) =>
                                 {
-                                    services.TryAddSingleton(KebabCaseEndpointNameFormatter.Instance);
+                                    services.AddScoped<AcceptOrderActivity>();
+                                    services.AddSingleton(KebabCaseEndpointNameFormatter.Instance);
                                     services.AddMassTransit(configure =>
                                     {
                                         configure.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
+                                        configure.AddActivitiesFromNamespaceContaining<AllocateInventoryActivity>();
                                         configure.AddSagaStateMachine<OrderStateMachine, OrderState>(typeof(OrderStateMachineDefinition))
                                         //.RedisRepository(s => s.DatabaseConfiguration("127.0.0.1"))
                                         .MongoDbRepository(r => {
@@ -59,6 +63,7 @@ namespace Sample.Service
                                             //});
 
                                         });
+                                        configure.AddRequestClient<AllocateInventory>();
                                         //configure.AddBus(ConfigureBus);
                                     });
                                     services.AddHostedService<MassTransitConsoleHostedService>();

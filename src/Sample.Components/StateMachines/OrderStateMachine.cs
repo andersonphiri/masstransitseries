@@ -86,7 +86,7 @@ namespace Sample.Components.StateMachines
         public State Cancelled { get; private set; }
         public State Accepted { get; private set; }
         public Event<OrderSubmitted> OrderSubmitted { get; private set; }
-        public Event<IOrderAccepted> OrderAccepted { get; private set; }
+        public Event<OrderAccepted> OrderAccepted { get; private set; }
         public Event<CheckOrder> OrderStatusRequested { get; private set; }
         public Event<ICustomerAccountClosed> AccountClosed { get; private set; }
         
