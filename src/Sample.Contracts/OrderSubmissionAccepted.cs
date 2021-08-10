@@ -2,7 +2,7 @@
 
 namespace Sample.Contracts
 {
-    public interface IOrderSubmissionAccepted
+    public interface OrderSubmissionAccepted
     {
         Guid OrderId { get; }
         DateTimeOffset Timestamp { get; }

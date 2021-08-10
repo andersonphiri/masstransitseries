@@ -8,7 +8,7 @@ namespace Sample.Components.StateMachines
     {
         public OrderStateMachineDefinition()
         {
-            ConcurrentMessageLimit = 4;
+            //ConcurrentMessageLimit = 4;
         }
         protected override void ConfigureSaga(IReceiveEndpointConfigurator endpointConfigurator, ISagaConfigurator<OrderState> sagaConfigurator)
         {

@@ -44,7 +44,7 @@ namespace StartMassTransitExamples1
                 // configure.AddMediator(services);
                 configure.AddRequestClient<ISubmitOrder>(
                     //new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
-                    new Uri($"exchange:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
+                    new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}")
                     ) ;
                 configure.AddRequestClient<CheckOrder>();
             });

@@ -26,7 +26,7 @@ namespace StartMassTransitExamples1.Controllers
         {
             try
             {
-                await _PublishedEndpoint.Publish<ICustomerAccountClosed>(new
+                await _PublishedEndpoint.Publish<CustomerAccountClosed>(new
                 {
                     CustomerNumber = customerNumber,
                     CustomerId = id

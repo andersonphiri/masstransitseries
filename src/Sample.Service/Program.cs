@@ -1,6 +1,8 @@
 ﻿using GreenPipes;
 using MassTransit;
 using MassTransit.Definition;
+using MassTransit.MongoDbIntegration.MessageData;
+using MassTransit.RabbitMqTransport;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -51,18 +53,22 @@ namespace Sample.Service
                                         }
                                         )
                                         ;
-                                       // configure.AddConsumers(Assembly.GetEntryAssembly());
-                                        configure.UsingRabbitMq((context, configurator) => {
-                                            configurator.ConfigureEndpoints(context
-                                               // , new KebabCaseEndpointNameFormatter("order-service", false)
-                                                );
-                                            configurator.Host("localhost");
-                                            //configurator.UseMessageRetry(retryConfigurator =>
-                                            //{
-                                            //    retryConfigurator.Interval(3, TimeSpan.FromSeconds(60));
-                                            //});
+                                        // configure.AddConsumers(Assembly.GetEntryAssembly());
+                                        //configure.UsingRabbitMq(
 
-                                        });
+                                        //    (context, configurator) => {
+                                        //    configurator.ConfigureEndpoints(context
+                                        //       , new KebabCaseEndpointNameFormatter("order-service", false)
+                                        //        );
+                                        //    configurator.Host("localhost");
+                                        //    //configurator.UseMessageRetry(retryConfigurator =>
+                                        //    //{
+                                        //    //    retryConfigurator.Interval(3, TimeSpan.FromSeconds(60));
+                                        //    //});
+                                        //    }
+
+                                        //    );
+                                        configure.UsingRabbitMq(ConfigureBus2);
                                         configure.AddRequestClient<AllocateInventory>();
                                         //configure.AddBus(ConfigureBus);
                                     });
@@ -98,6 +104,27 @@ namespace Sample.Service
                 //    }
             
             );
+        }
+
+        static void ConfigureBus2(IBusRegistrationContext context, IRabbitMqBusFactoryConfigurator configurator)
+        {
+            configurator.UseMessageData(new MongoDbMessageDataRepository("mongodb://127.0.0.1", "attachments"));
+            configurator.UseMessageScheduler(new Uri("queue:quartz"));
+
+            //configurator.ReceiveEndpoint(KebabCaseEndpointNameFormatter.Instance.Consumer<RoutingSlipBatchEventConsumer>(), e =>
+            //{
+            //    e.PrefetchCount = 20;
+
+            //    e.Batch<RoutingSlipCompleted>(b =>
+            //    {
+            //        b.MessageLimit = 10;
+            //        b.TimeLimit = TimeSpan.FromSeconds(5);
+
+            //        b.Consumer<RoutingSlipBatchEventConsumer, RoutingSlipCompleted>(context);
+            //    });
+            //});
+
+            configurator.ConfigureEndpoints(context);
         }
     }
 }

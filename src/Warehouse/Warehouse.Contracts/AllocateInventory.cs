@@ -9,4 +9,8 @@ namespace Warehouse.Contracts
         decimal Quantity { get; }
     }
 
+    public interface AllocationHoldDurationExpired
+    {
+        Guid AllocationId { get; }
+    }
 }

@@ -23,7 +23,7 @@ namespace Sample.Components.Consumers
             {
                 if (context.RequestId != null)
                 {
-                    await context.RespondAsync<IOrderSubmissionRejected>(new
+                    await context.RespondAsync<OrderSubmissionRejected>(new
                     {
 
                         OrderId = context.Message.OrderId,
@@ -45,7 +45,7 @@ namespace Sample.Components.Consumers
 
             if (context.RequestId != null)
             {
-                await context.RespondAsync<IOrderSubmissionAccepted>(new
+                await context.RespondAsync<OrderSubmissionAccepted>(new
                 {
                     InVar.Timestamp,
                     context.Message.OrderId,

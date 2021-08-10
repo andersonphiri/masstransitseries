@@ -81,7 +81,7 @@ namespace StartMassTransitExamples1.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(Guid id, string customerNumber)
         {
-            var (accepted, rejected) = await _SubmitOrderRequestClient.GetResponse<IOrderSubmissionAccepted, IOrderSubmissionRejected>(new
+            var (accepted, rejected) = await _SubmitOrderRequestClient.GetResponse<OrderSubmissionAccepted, OrderSubmissionRejected>(new
             {
 
                 OrderId = id,
@@ -105,7 +105,7 @@ namespace StartMassTransitExamples1.Controllers
         {
             if (id != Guid.Empty && !string.IsNullOrEmpty(customerNumber) )
             {
-                var endpoint = await _SendEndpointProvider.GetSendEndpoint(new Uri("exchange:submit-order"));
+                var endpoint = await _SendEndpointProvider.GetSendEndpoint(new Uri("queue:submit-order"));
                 await endpoint.Send<ISubmitOrder>(new
                 {
                     OrderId = id,

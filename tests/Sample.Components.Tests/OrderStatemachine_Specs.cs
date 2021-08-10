@@ -105,7 +105,7 @@ namespace Sample.Components.Tests
                 var instanceId = await saga.Exists(orderId, x => x.Submitted);
                 Assert.That(instanceId, Is.Not.Null);
 
-                await harness.Bus.Publish<ICustomerAccountClosed>(new
+                await harness.Bus.Publish<CustomerAccountClosed>(new
                 {
                     CustomerNumber = customerNumber,
                     CustomerId = InVar.Id

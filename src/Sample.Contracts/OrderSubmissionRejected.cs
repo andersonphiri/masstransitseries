@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sample.Contracts
 {
-    public interface ICustomerAccountClosed
+    public interface OrderSubmissionRejected
     {
-        Guid CustomerId { get; }
+        Guid OrderId { get; }
+        DateTimeOffset Timestamp { get; }
         string CustomerNumber { get; }
+        List<string> Reasons { get; }
     }
 }

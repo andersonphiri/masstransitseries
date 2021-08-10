@@ -24,7 +24,7 @@ namespace Sample.Components.Tests
             {
                 var orderId = NewId.NextGuid();
                 var requestClient = await harness.ConnectRequestClient<ISubmitOrder>();
-                var response = await requestClient.GetResponse<IOrderSubmissionAccepted>(new {
+                var response = await requestClient.GetResponse<OrderSubmissionAccepted>(new {
                     OrderId = orderId,
                     InVar.Timestamp,
                     CustomerNumber = customerNumber
@@ -32,7 +32,7 @@ namespace Sample.Components.Tests
                 });
                 Assert.That(response.Message.OrderId, Is.EqualTo(orderId));
                 Assert.That(consumer.Consumed.Select<ISubmitOrder>().Any(), Is.True);
-                Assert.That(harness.Sent.Select<IOrderSubmissionAccepted>().Any(), Is.True);
+                Assert.That(harness.Sent.Select<OrderSubmissionAccepted>().Any(), Is.True);
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace Sample.Components.Tests
             {
                 var orderId = NewId.NextGuid();
                 var requestClient = await harness.ConnectRequestClient<ISubmitOrder>();
-                var response = await requestClient.GetResponse<IOrderSubmissionRejected>(new
+                var response = await requestClient.GetResponse<OrderSubmissionRejected>(new
                 {
                     OrderId = orderId,
                     InVar.Timestamp,
@@ -59,7 +59,7 @@ namespace Sample.Components.Tests
                 });
                 Assert.That(response.Message.OrderId, Is.EqualTo(orderId));
                 Assert.That(consumer.Consumed.Select<ISubmitOrder>().Any(), Is.True);
-                Assert.That(harness.Sent.Select<IOrderSubmissionRejected>().Any(), Is.True);
+                Assert.That(harness.Sent.Select<OrderSubmissionRejected>().Any(), Is.True);
             }
             finally
             {
@@ -86,8 +86,8 @@ namespace Sample.Components.Tests
                     CustomerNumber = customerNumber
                 });
                 Assert.That(consumer.Consumed.Select<ISubmitOrder>().Any(), Is.True);
-                Assert.That(harness.Sent.Select<IOrderSubmissionAccepted>().Any(), Is.False);
-                Assert.That(harness.Sent.Select<IOrderSubmissionRejected>().Any(), Is.False);
+                Assert.That(harness.Sent.Select<OrderSubmissionAccepted>().Any(), Is.False);
+                Assert.That(harness.Sent.Select<OrderSubmissionRejected>().Any(), Is.False);
             }
             finally
             {
